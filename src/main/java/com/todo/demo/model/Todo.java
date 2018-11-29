@@ -1,8 +1,6 @@
 package com.todo.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -14,15 +12,17 @@ public class Todo {
     private String titre;
     private String desciption;
     private String etat;
-    private int id_user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
     public Todo() {}
 
-    public Todo(String titre, String desciption, String etat, int id_user) {
+    public Todo(String titre, String desciption, String etat, User user) {
         this.titre = titre;
         this.desciption = desciption;
         this.etat = etat;
-        this.id_user = id_user;
+        this.user = user;
     }
 
     public int getId() {
@@ -41,8 +41,8 @@ public class Todo {
         return etat;
     }
 
-    public int getId_user() {
-        return id_user;
+    public User getUser() {
+        return user;
     }
 
     public void setId(int id) {
@@ -61,7 +61,18 @@ public class Todo {
         this.etat = etat;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", desciption='" + desciption + '\'' +
+                ", etat='" + etat + '\'' +
+                ", user=" + user +
+                '}';
     }
 }
