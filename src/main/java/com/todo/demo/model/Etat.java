@@ -1,8 +1,6 @@
 package com.todo.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Etat {
@@ -12,6 +10,9 @@ public class Etat {
     private int id;
 
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private String user;
 
     public Etat() {}
 

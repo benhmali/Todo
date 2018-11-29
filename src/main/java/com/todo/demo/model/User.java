@@ -1,14 +1,18 @@
 package com.todo.demo.model;
 
+import org.h2.table.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
 
     private String prenom;
